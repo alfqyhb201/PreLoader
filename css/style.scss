@@ -23,7 +23,7 @@ body{
 	// height: 100vh;
 	// padding: 0;
 	margin: 0;
-	background: $BG;
+	background: $cL;
 	// border-top: 20px solid $scndry;
 	
 }
@@ -99,7 +99,7 @@ body{
 
 
  #colorWrapper {
-   
+   position: absolute;
    width: 100%; height: 100%;
    background-color: $BG ;
    transition: background-color 0.35s ease-out;
