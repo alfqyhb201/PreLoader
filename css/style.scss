@@ -1,0 +1,342 @@
+$n-dim: 4;
+// $n: pow($n-dim, 2); //Orig var.
+$n: 16;  //FIX: Stupid reason not accepting a 'pow()' for "$i from to __"
+$n-faces: 3;
+$c: #ffffff #330d5b #4d148c; 
+$cL: #ffffff;
+$BG: rgb(14, 12, 16);
+
+$scndry: #ff66009a;
+
+$rot: rotateX(90deg) rotateY(90deg) ();
+$edge: 2.75em;
+$dist: $edge + .75em;
+$t: 3.15s;
+$fntsize: 5rem;
+
+html {font-size: 12px /* 16px=default*/; overflow: hidden;   }
+
+// .measure {position:absolute; width: 50vw; height: 6em; background-color: white;}
+
+body{
+	// width: 100vw;
+	// height: 100vh;
+	// padding: 0;
+	margin: 0;
+	background: $BG;
+	// border-top: 20px solid $scndry;
+	
+}
+
+.true-text{
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+	// background: rgb(200.5, 0, 0);
+	// color: $scndry;
+	// background: linear-gradient(50deg, $scndry, #ffffff50), url(../img/logo2.svg);
+	// background-position: bottom;
+	// background-size: 100% 100%;
+	// background-repeat: no-repeat;
+	// -webkit-background-clip: text;
+	// -webkit-text-fill-color: transparent;
+	font-size: $fntsize;
+	font-weight: 900;
+	font-family: fantasy;;
+}
+
+
+.logo{
+	position: fixed;
+	// background: #fff;
+	bottom: 0;
+	right: 0;
+	width: 60px;
+}
+
+.loader{
+	color: #ffffff;
+	font-size: xx-large;
+	font-weight: bold;
+	position: absolute;
+	bottom: 20%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.buttonCont {
+  display:flex; position:absolute;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around; 
+  left: 1.25em; top: 1.25em;
+  padding: 1em 0;
+  width: 8.5em; height: 15em;
+  border-radius: 0.15em;
+  background: rgba(195,198,205,0.06);
+  box-shadow: inset 2em 2em 12em -4em rgba(195,198,205,0.2);
+  .button {
+    position:relative; display:block;
+    padding: 0 1em;
+    height: 2.5em;
+    font-family: 'Open Sans';
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 8px;
+    line-height: 2.5em;
+    border-radius: 0.15em;
+    overflow:hidden;
+    cursor: pointer;
+    transition: box-shadow 0.6s ease;
+    &.gemBlue_B {color:#276EFF ; background-color: #1E2448;}
+     &.phosGreen-II_B {color:#15f4c2 ; background-color: #0A1819;}
+     &.honeyComb_B {color:#FCB367 ; background-color: #FFF8E4;}
+     &.whtSlate_B {color:#a0aAa9 ; background-color: #E4EDEC;}
+  }
+}
+
+
+
+
+ #colorWrapper {
+   
+   width: 100%; height: 100%;
+   background-color: $BG ;
+   transition: background-color 0.35s ease-out;
+  .grid {
+    width: (($edge * 4) + (0.5em * 3)) * 0.7 + 0em; 
+    height: 6.25em; 
+  //  background-color: white;
+    &, * {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform-style: preserve-3d;
+    }
+    transform: rotateX(-35deg) rotateY(-45deg);
+   	// animation: revolveGrid 4s ease infinite alternate;
+    // @keyframes revolveGrid {
+    //   from {transform: rotateX(-65deg) rotateY(-45deg);}
+    //   to {transform: rotateX(-35deg) rotateY(-45deg);}
+    // } 
+  }
+
+  .cube {
+    @for $i from 0 to $n {
+      $j: $i%$n-dim;
+      $k: floor($i/$n-dim);
+      $tx: ($j - .5*($n-dim - 1))*$dist ;
+      $tz: ($k - .5*($n-dim - 1))*$dist ;
+
+      &:nth-child(#{$i + 1}) {
+        transform: translate3d($tx , 0, $tz );
+
+        .lifter, .cube__face:nth-child(1) {
+          animation-delay: 
+            ($j + ($n-dim - 1 - $k))*0.0466*$t;
+        }
+      }
+    }
+
+    &__face {
+      margin: (-10 * $edge) + 20;
+      width: $edge; height: $edge;
+      transition: background 0.35s ease-out;
+      @for $i from 0 to $n-faces {
+        &:nth-child(#{$i + 1}) {
+          transform: nth($rot, $i + 1) 
+            translateZ(.5*$edge);
+          background: nth($c, $i + 1);
+        }
+        &:nth-child(1){
+        //  box-shadow: 350px 220px 90px rgba(0,0,0,0.1), 320px 250px 50px rgba(0,0,0,0.03);
+          background: nth($c, 1);
+          animation: aniCL ($t / 4) cubic-bezier(.4,0.2,.4,0.6) alternate infinite ;
+        }
+      }
+    }
+  }
+
+  .lifter {
+    transform-origin: 0 .5 * $edge;
+    transform: scaleY(0);
+    animation: ani ($t / 4) cubic-bezier(.5,.1,.5,.9) alternate infinite ; // cubic-bezier(.625,.075,.4,.925)
+  }
+
+  @keyframes ani {
+    0% { transform: scaleY(0); }
+    100% { transform: scaleY(0.533); }
+  }
+//  @keyframes aniCL {
+//    0% { background: nth($cL, 1); }
+//    100% { background: nth($c, 1); }
+//  }
+
+  /*@keyframes aniCL {
+    0%, 25%, 50%, 75%, 100% { background: nth($cL, 1); }
+    12%, 36%, 64%, 89%,  { background: nth($c, 1); }
+  }*/
+}
+
+/*
+.shadow {
+  position: relative;
+  top: 50vh;
+  margin: 0 auto; margin-top: -200px;
+  width: 200px; height: 200px;
+  background-color: transparent;
+  transform: rotateX(60deg) rotate(45deg);
+  z-index: -1;
+}
+.flatShadow {
+  margin-top: 20px;
+  background-color: rgba(60,0,0,0.008);
+}
+// .dropShadow { box-shadow: 420px 400px 160px rgba(90,0,0,0.1);}  
+*/
+
+
+
+#colorWrapper.honeyComb {
+  $c: #FFF2D0 #FFD792  #FCB367 ; 
+  $cL: #FFF8E4;
+  $BG: rgb(250, 252, 251);
+  
+ background-color: $BG; 
+    .cube {
+    &__face {
+      @for $i from 0 to $n-faces {
+        &:nth-child(#{$i + 1}) {
+          background: nth($c, $i + 1);
+        }
+        &:nth-child(1){
+          background: nth($c, 1);
+          animation: aniCL-honeyComb ($t / 4) cubic-bezier(.4,0.2,.4,0.6) alternate infinite ;
+        }
+      }
+    }
+  }
+    @keyframes aniCL-honeyComb {
+    0% { background: nth($cL, 1); }
+    100% { background: nth($c, 1); }
+  }
+}
+
+#colorWrapper.whtSlate {
+$c: #D0DAD9 #B9C6C7 #E4EDEC ; 
+$cL: #D0DAD9;
+$BG: rgb(250, 252, 251);
+  
+ background-color: $BG; 
+    .cube {
+    &__face {
+      @for $i from 0 to $n-faces {
+        &:nth-child(#{$i + 1}) {
+          background: nth($c, $i + 1);
+        }
+        &:nth-child(1){
+          background: nth($c, 1);
+          animation: aniCL-whtSlate ($t / 4) cubic-bezier(.4,0.2,.4,0.6) alternate infinite ;
+        }
+      }
+    }
+  }
+    @keyframes aniCLwht-Slate {
+    0% { background: nth($cL, 1); }
+    100% { background: nth($c, 1); }
+  }
+}
+
+#colorWrapper.phosGreen-II {
+$c: #0A1819 #102928 #15f4c2; 
+$cL: #0d2c2f;
+$BG: rgb(16, 18, 22);
+  
+ background-color: $BG; 
+    .cube {
+    &__face {
+      @for $i from 0 to $n-faces {
+        &:nth-child(#{$i + 1}) {
+          background: nth($c, $i + 1);
+        }
+        &:nth-child(1){
+          background: nth($c, 1);
+          animation: aniCL-phosGreen-II ($t / 4) cubic-bezier(.4,0.2,.4,0.6) alternate infinite ;
+        }
+      }
+    }
+  }
+    @keyframes aniCL-phosGreen-II {
+    0% { background: nth($cL, 1); }
+    100% { background: nth($c, 1); }
+  }
+}
+
+#colorWrapper.gemBlue {
+$c: #ffffff #ff6600  #4d148c; 
+$cL: #cabcda;
+// $BG: rgb(0, 0, 0); //orig rgb(12, 12, 20); //LightBG rgb(250, 251, 252
+$BG: rgb(12, 12, 20); //orig rgb(12, 12, 20); //LightBG rgb(250, 251, 252
+$LightBG: rgb(250, 251, 252); //orig rgb(12, 12, 20); //LightBG rgb(250, 251, 252
+  
+ background-color: $BG; 
+    .cube {
+    &__face {
+      @for $i from 0 to $n-faces {
+        &:nth-child(#{$i + 1}) {
+          background: nth($c, $i + 1);
+        }
+        &:nth-child(1){
+          background: nth($c, 1);
+          animation: aniCL-gemBlue ($t / 4) cubic-bezier(.4,0.2,.4,0.6) alternate infinite ;
+        }
+      }
+    }
+  }
+    @keyframes aniCL-gemBlue {
+    0% { background: nth($cL, 1); }
+    100% { background: nth($c, 3); }
+  }
+}
+
+/*/\\/   RIPPLE CLICK FX ---Start----   /\/\*/
+.inkAnchor {
+  // display: inline-block !important; 
+  cursor: pointer; /*since the links are dummy without href values*/
+  /*prevent text selection*/
+  user-select: none;
+  /*static positioned elements appear behind absolutely positioned siblings(.ink in this case) hence we will make the links relatively positioned to bring them above .ink*/
+  position: relative;
+}
+
+/*.ink styles - the elements which will create the ripple effect. The size and position of these elements will be set by the JS code. Initially these elements will be scaled down to 0% and later animated to large fading circles on user click.*/
+.button:active {
+  transition: box-shadow 0.15s ease-out;
+  box-shadow: 0 0.5em 0.33em -0.33em rgba(0,0,0, 0.12), 0 0.33em 1em -0.25em rgba(0,0,0, 0.2);
+}
+
+.whtSlate_B .ink {background-color: #B9C6C7;}
+.honeyComb_B .ink {background-color: #FFD792;}
+.phosGreen-II_B .ink {background-color: #15f4c2;}
+.gemBlue_B .ink {background-color: #276EFF;}
+.ink {
+ // font-size: 100%; //defines Em-size
+  display: block; 
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background-color: blue;
+  pointer-events: none !important;
+//  mix-blend-mode: color;
+//  color: black;
+//  box-shadow: inset 0 0 0 0em;
+//    background-color: black;
+//  mix-blend-mode: difference;
+//  z-index: -2;
+}
+/*animation effect*/
+.ink.animateInk {animation: ripple 0.9s cubic-bezier(0.2,0.2, 0,1) forwards 1;}
+@keyframes ripple {
+    0% {opacity: 0.6; transform: scale(0); /*box-shadow: inset 0 0 0 12em ;*/ }
+
+  100% {opacity: 0.0; transform: scale(1);/* box-shadow: inset 0 0 0 0em ;*/}
+}
