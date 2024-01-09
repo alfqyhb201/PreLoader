@@ -8,7 +8,8 @@ $num: 11;
         font-size: 8rem;
         font-weight: bold;
         padding-left: 2rem;
-        color: #576574;
+        color: #ff6600;
+        // color: #576574;
         
         animation: light 3s linear infinite;
         &:first-child {
@@ -30,17 +31,20 @@ $num: 11;
   
   @-webkit-keyframes light {
     0% {
-      color: #576574;
+      color: #ff6600;
+      // color: #418;
+      // color: #576574;
       text-shadow: 10px 5px 1rem rgb(0,0,0), 0 5px 7rem #000;
     }
     90% {
-      color: #576574;
+      // color: #ff6600;
+      color: #418;
       text-shadow: 0 0 1rem rgb(0, 0, 0), 0 0 7rem #000;
       // text-shadow: none;
     }
     100% {
       color: #f60;
-      text-shadow: 0 0 1rem #ff0, 0 0 7rem #ff0;
+      text-shadow: 0 0 1rem #fff, 0 0 7rem #ff0;
     }
   }
   
