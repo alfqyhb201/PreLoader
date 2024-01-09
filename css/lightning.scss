@@ -9,6 +9,7 @@ $num: 11;
         font-weight: bold;
         padding-left: 2rem;
         color: #576574;
+        
         animation: light 3s linear infinite;
         &:first-child {
             padding-left: 0rem;
@@ -30,11 +31,12 @@ $num: 11;
   @-webkit-keyframes light {
     0% {
       color: #576574;
-      text-shadow: none;
+      text-shadow: 10px 5px 1rem rgb(0,0,0), 0 5px 7rem #000;
     }
     90% {
       color: #576574;
-      text-shadow: none;
+      text-shadow: 0 0 1rem rgb(0, 0, 0), 0 0 7rem #000;
+      // text-shadow: none;
     }
     100% {
       color: #f60;
@@ -51,7 +53,7 @@ $num: 11;
     animation: thunder 6s infinite;
   }
 
-  $color1: rgba(12, 12, 20, .9);
+  $color1: rgba(12, 12, 20, 0.581);
   $color2: rgba(255, 255, 255, 0.821);
   @-webkit-keyframes thunder {
     0% {

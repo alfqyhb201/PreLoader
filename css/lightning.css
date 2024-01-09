@@ -47,11 +47,11 @@
 @-webkit-keyframes light {
   0% {
     color: #576574;
-    text-shadow: none;
+    text-shadow: 10px 5px 1rem rgb(0, 0, 0), 0 5px 7rem #000;
   }
   90% {
     color: #576574;
-    text-shadow: none;
+    text-shadow: 0 0 1rem rgb(0, 0, 0), 0 0 7rem #000;
   }
   100% {
     color: #f60;
@@ -69,34 +69,34 @@
 
 @-webkit-keyframes thunder {
   0% {
-    background-color: rgba(12, 12, 20, 0.9);
+    background-color: rgba(12, 12, 20, 0.581);
   }
   9% {
-    background-color: rgba(12, 12, 20, 0.9);
+    background-color: rgba(12, 12, 20, 0.581);
   }
   10% {
-    background-color: rgba(12, 12, 20, 0.9);
+    background-color: rgba(12, 12, 20, 0.581);
   }
   10.5% {
-    background-color: rgba(12, 12, 20, 0.9);
+    background-color: rgba(12, 12, 20, 0.581);
   }
   80% {
-    background-color: rgba(12, 12, 20, 0.9);
+    background-color: rgba(12, 12, 20, 0.581);
   }
   82% {
-    background-color: rgba(12, 12, 20, 0.9);
+    background-color: rgba(12, 12, 20, 0.581);
   }
   82.5% {
     background-color: rgba(255, 255, 255, 0.821);
   }
   83% {
-    background-color: rgba(12, 12, 20, 0.9);
+    background-color: rgba(12, 12, 20, 0.581);
   }
   83.5% {
     background-color: rgba(255, 255, 255, 0.821);
   }
   100% {
-    background-color: rgba(12, 12, 20, 0.9);
+    background-color: rgba(12, 12, 20, 0.581);
   }
 }
 

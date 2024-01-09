@@ -360,7 +360,10 @@ body {
 }
 
 #colorWrapper.gemBlue {
-  background-color: rgb(12, 12, 20);
+  background-image: url(../img/36256.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #colorWrapper.gemBlue .cube__face:nth-child(1) {
   background: #ffffff;
