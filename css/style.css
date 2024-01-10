@@ -88,6 +88,7 @@ body {
   height: 100%;
   background-color: rgb(14, 12, 16);
   transition: background-color 0.35s ease-out;
+  z-index: 999;
   /*@keyframes aniCL {
     0%, 25%, 50%, 75%, 100% { background: nth($cL, 1); }
     12%, 36%, 64%, 89%,  { background: nth($c, 1); }
@@ -252,7 +253,7 @@ body {
   width: 200px; height: 200px;
   background-color: transparent;
   transform: rotateX(60deg) rotate(45deg);
-  z-index: -1;
+
 }
 .flatShadow {
   margin-top: 20px;
@@ -260,6 +261,40 @@ body {
 }
 // .dropShadow { box-shadow: 420px 400px 160px rgba(90,0,0,0.1);}  
 */
+.triangle, .triangle:before, .triangle:after {
+  width: 9em;
+  height: 9em;
+}
+
+.triangle {
+  overflow: hidden;
+  position: relative;
+  border-radius: 20%;
+  transform: translateY(50%) rotate(30deg) rotateZ(90deg) skewY(30deg) scaleX(0.866);
+  pointer-events: none;
+}
+
+.triangle:before, .triangle:after {
+  position: absolute;
+  background: #1a47b0;
+  pointer-events: auto;
+  content: "";
+}
+
+.triangle:before {
+  border-radius: 20% 20% 20% 53%;
+  transform: scaleX(1.155) skewY(-30deg) rotate(-30deg) translateY(-42.3%) skewX(30deg) scaleY(0.866) translateX(-24%);
+}
+
+.triangle:after {
+  border-radius: 20% 20% 53% 20%;
+  transform: scaleX(1.155) skewY(-30deg) rotate(-30deg) translateY(-42.3%) skewX(-30deg) scaleY(0.866) translateX(24%);
+}
+
+.tra2::after, .tra2::before {
+  background: #000;
+}
+
 #colorWrapper.honeyComb {
   background-color: rgb(250, 252, 251);
 }
