@@ -1,6 +1,5 @@
 html {
   font-size: 12px;
-  overflow: hidden;
 }
 
 body {
@@ -291,8 +290,15 @@ body {
   transform: scaleX(1.155) skewY(-30deg) rotate(-30deg) translateY(-42.3%) skewX(-30deg) scaleY(0.866) translateX(24%);
 }
 
-.tra2::after, .tra2::before {
-  background: #000;
+.tra1 {
+  position: absolute;
+  right: 27%;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.tra1::after, .tra1::before {
+  background: #418;
 }
 
 #colorWrapper.honeyComb {

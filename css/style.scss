@@ -228,10 +228,19 @@ body{
 			skewX(-30deg) scaleY(.866) translateX(24%);
 }
 
-.tra2::after, .tra2::before{
-  background: #000;
+.tra1{
+  position: absolute;
+  right: 27%;
+  // transform: translateY(10%) translateX(10deg) rotate(30deg) rotateZ(-90deg) skewY(30deg) scaleX(.866);
+  z-index: 0;
+  opacity: 0.5;
 }
 
+.tra1::after, .tra1::before{
+  background: #418;
+  // transform: translateY(1%) translateX(10deg) rotate(30deg) rotateZ(-90deg) skewY(30deg) scaleX(.866);
+  
+}
 
 #colorWrapper.honeyComb {
   $c: #FFF2D0 #FFD792  #FCB367 ; 

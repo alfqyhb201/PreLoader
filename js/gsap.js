@@ -17,13 +17,5 @@ function hideLoader() {
         // opacity: 0,
         // ease: "bounce",
     });
-    // tl.to(colorWrapper, {
-    //     duration: 2,
-    //     delay: 2
-    // });
-    // function sleep(ms) {
-    //     return new Promise(resolve => setTimeout(resolve, ms));
-    //   }
-      
-    //   sleep(2000).then(() => { colorWrapper.remove();  });
+    
 }
