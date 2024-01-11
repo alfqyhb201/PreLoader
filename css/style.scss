@@ -16,7 +16,7 @@ $fntsize: 5rem;
 
 html {
   font-size: 12px /* 16px=default*/;
-  //  overflow: hidden;  
+   overflow: hidden;  
    }
 
 // .measure {position:absolute; width: 50vw; height: 6em; background-color: white;}
@@ -324,13 +324,14 @@ $cL: #cabcda;
 $BG: rgb(12, 12, 20); //orig rgb(12, 12, 20); //LightBG rgb(250, 251, 252
 $LightBG: rgb(250, 251, 252); //orig rgb(12, 12, 20); //LightBG rgb(250, 251, 252
   
-//  background-color: $BG;
+//  background-color: rgb(122, 17, 136);
  background-image: url(../img/36256.svg);
  background-position: center center;
  background-repeat: no-repeat;
  background-size: cover;
-//  clip-path: polygon(50% 0,100% 100%,0 100%);
-//  border-radius: 50px;
+ .grid {
+  // top: 30%;
+ }
     .cube {
     &__face {
       @for $i from 0 to $n-faces {

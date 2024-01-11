@@ -1,7 +1,7 @@
 let num = 0;
 let red = 0, green = 0;
 const loaderElement = document.querySelector('.loader');
-let timer = setInterval(loader, 200);
+let timer = setInterval(loader, 20);
 function loader() {
     if (num < 100) {
         num++;
