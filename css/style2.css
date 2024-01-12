@@ -1,12 +1,13 @@
 header {
   overflow: hidden;
+  width: 100vw;
 }
 
 .my-nav {
   position: absolute !important;
   width: 100%;
   z-index: 10;
-  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  background: rgba(68, 17, 136, 0.1333333333);
   backdrop-filter: blur(15px);
 }
 .my-nav .navbar-brand img {
@@ -28,34 +29,90 @@ header {
   left: 5%;
 }
 
-.my-carousel {
+.slider {
   position: absolute;
   top: 0;
+  right: 0;
+  width: 100%;
+  background: #418;
+  height: 100%;
 }
 
-.carousel-item {
-  height: 100vh;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+.slide, .slide::before {
+  position: absolute;
+  padding: 4px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  opacity: 1;
 }
 
-.carousel-item.first {
-  background-image: linear-gradient(45deg, #441188, rgba(122, 17, 136, 0.3176470588)), url("../img/branding2.jpg");
+.slide::before {
+  content: "";
+  background: rgba(68, 17, 136, 0.5333333333);
+  padding: 0;
+  /* z-index: 2; */
 }
 
-.carousel-item.second {
-  background-image: linear-gradient(45deg, #441188, rgba(122, 17, 136, 0.3176470588)), url("../img/design2.jpg");
+.slide:not(#first) {
+  opacity: 0;
 }
 
-.carousel-item.third {
-  background-image: linear-gradient(45deg, #441188, rgba(122, 17, 136, 0.3176470588)), url("../img/laptop-removebg-preview-transformed_11zon.png");
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.carousel-indicators {
-  cursor: alias;
+button {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+}
+
+#nextBtn {
+  right: 5%;
+}
+
+#prevBtn {
+  left: 5%;
+}
+
+.my-carousel {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  bottom: 5%;
+  /* align-self: center; */
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+}
+
+.my-carousel .carousel-indicators {
+  /* background: #fff; */
+  height: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-carousel .carousel-indicators div {
+  margin-left: 5px;
+  width: 2rem;
+  height: 100%;
+  background: #aaa;
+  border-radius: 100px;
+}
+
+.my-carousel .carousel-indicators div.crsl-item.active {
+  background: #fff;
 }
 
 /*# sourceMappingURL=style2.css.map */

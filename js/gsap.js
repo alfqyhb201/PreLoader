@@ -1,9 +1,9 @@
 function hideLoader() {
     const colorWrapper = document.getElementById("colorWrapper");
 
-    const tl = gsap.timeline();
+    const tmln = gsap.timeline();
 
-    tl.to(colorWrapper, {
+    tmln.to(colorWrapper, {
         duration: 2,
         // delay: 2,
         y: -2000,
